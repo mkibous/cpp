@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/12 11:31:33 by mkibous           #+#    #+#             */
+/*   Updated: 2024/09/12 11:31:34 by mkibous          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 
 std::string ft_read(char *msg)
@@ -51,7 +63,7 @@ class contact
 class PhoneBook
 {
     private:
-        int index = 0;
+        int index;
         contact contacts[8];
     public :
     void ADD()
@@ -68,8 +80,8 @@ class PhoneBook
     {
         int i = -1;
         std::string in;
-        for(contact tmp : contacts){
-            tmp.SEARCH();
+        for(int i = 0; i < 8; i++){
+            contacts[i].SEARCH();
             }
         std::cout << "Choose an index :\n";
         std::getline(std::cin, in);
@@ -96,6 +108,4 @@ int main()
         else if(command == (std::string)"EXIT")
             return(0);
     }
-    
-
 }

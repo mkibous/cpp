@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 11:31:30 by mkibous           #+#    #+#             */
-/*   Updated: 2024/09/12 11:31:31 by mkibous          ###   ########.fr       */
+/*   Created: 2024/09/12 11:30:58 by mkibous           #+#    #+#             */
+/*   Updated: 2024/09/12 12:03:20 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Zombie.hpp"
 
-int main(int arc, char **arv)
+Zombie* newZombie(std::string name)
 {
-    std::string str;
-    if(arc == 1)
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-    for(int i = 1; i < arc; i++){
-        for (int j = 0; arv[i][j]; j++)
-            std::cout << (char)toupper(arv[i][j]);
-    }
-    std::cout << "\n";
-
+    Zombie* zombie = new Zombie(name);
+    return (zombie);
 }
