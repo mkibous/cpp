@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombie.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:31:08 by mkibous           #+#    #+#             */
-/*   Updated: 2024/09/12 12:20:43 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/10/27 15:13:26 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#pragma once
 #include <iostream>
-#include <string>
 class Zombie
 {
     private:
@@ -21,10 +19,7 @@ class Zombie
     public:
         Zombie(std::string name);
         ~Zombie();
-    void announce(){
-        std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    }
+        void announce();
 };
     Zombie* newZombie(std::string name);
     void randomChump(std::string name);
-#endif 

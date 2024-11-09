@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 13:13:49 by mkibous           #+#    #+#             */
-/*   Updated: 2024/10/27 15:17:09 by mkibous          ###   ########.fr       */
+/*   Created: 2024/11/06 17:16:01 by mkibous           #+#    #+#             */
+/*   Updated: 2024/11/09 22:20:59 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Point.hpp"
 
-Zombie* zombieHorde( int N, std::string name ){
-    if(N < 0)
-        return NULL;
-    Zombie* Zombies = new Zombie[N];
-    for (int i = 0; i < N; i++){
-        Zombies[i].setname(name);
-    }
-    return Zombies;
+int main(void)
+{
+    Point a(1.5,2.3);
+    Point b(4.2, 6.7);
+    Point c(5.8, 1.9);
+    Point p(3.1,4.5);
+    
+    std::cout << "a: " << bsp(a, b, c, p) << std::endl;
+    return 0;
 }

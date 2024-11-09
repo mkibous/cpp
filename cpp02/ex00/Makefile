@@ -1,14 +1,16 @@
-NAME = zombie
-SRC = main.cpp Zombie.cpp zombieHorde.cpp
-FLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = fixed
+SRC = main.cpp Fixed.cpp
+FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	c++ $(FLAGS) $(OBJ) -o $(NAME)
-%.o: %.cpp Zombie.hpp
+
+%.o: %.cpp Fixed.hpp
 	c++ $(FLAGS) -c $<
+
 clean: 
 	rm -f $(OBJ)
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 12:27:50 by mkibous           #+#    #+#             */
-/*   Updated: 2024/10/19 17:26:18 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/10/22 11:44:45 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ jim.setWeapon(club);
 jim.attack();
 club.setType("some other type of club");
 jim.attack();
-}
 return 0;
+}
 }
