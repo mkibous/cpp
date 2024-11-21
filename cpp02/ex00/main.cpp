@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:16:01 by mkibous           #+#    #+#             */
-/*   Updated: 2024/11/06 17:40:31 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/11/20 15:14:08 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 int main(void) {
     Fixed a;
     a.setRawBits(10);
-    Fixed b(a);
+    const Fixed b(a);
     Fixed c;
-    a.setRawBits(20);
-    c = a;
+    c = b;
     a.setRawBits(30);
     std::cout << a.getRawBits() << std::endl;
     std::cout << b.getRawBits() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:44:38 by mkibous           #+#    #+#             */
-/*   Updated: 2024/11/09 21:47:36 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/11/20 15:23:27 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int Fixed::getRawBits(void) const
 }
 Fixed & Fixed::operator=( Fixed const & rhs )
 {
-    value = rhs.getRawBits();
+    if (this != &rhs)
+        value = rhs.getRawBits();
     return *this;
 }
 float Fixed::toFloat( void ) const{

@@ -15,7 +15,6 @@ public:
     float toFloat( void ) const;
     int toInt( void ) const;
     int getRawBits( void ) const;
-    friend std::ostream &operator<<(std::ostream &o, Fixed const &fixed);
     Fixed operator++(); // Prefix increment
     Fixed operator++(int); // Postfix increment
     Fixed operator--();
@@ -35,3 +34,4 @@ public:
     bool operator==(Fixed const & rhs) const;
     bool operator!=(Fixed const & rhs) const;
 };
+std::ostream &operator<<(std::ostream &o, Fixed const &fixed);

@@ -15,5 +15,5 @@ public:
     float toFloat( void ) const;
     int toInt( void ) const;
     int getRawBits( void ) const;
-    friend std::ostream &operator<<(std::ostream &o, Fixed const &fixed);
 };
+std::ostream &operator<<(std::ostream &o, Fixed const &fixed);

@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:16:01 by mkibous           #+#    #+#             */
-/*   Updated: 2024/11/09 22:20:59 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/11/20 15:21:25 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int main(void)
 {
-    Point a(1.5,2.3);
-    Point b(4.2, 6.7);
-    Point c(5.8, 1.9);
-    Point p(3.1,4.5);
+    Point a(0,0);
+    Point b(4, 0);
+    Point c(0, 4);
+    Point p(1.5,0.2);
     
     std::cout << "a: " << bsp(a, b, c, p) << std::endl;
     return 0;
