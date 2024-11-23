@@ -1,6 +1,6 @@
 NAME = fixed
 SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

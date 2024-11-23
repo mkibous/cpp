@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:16:01 by mkibous           #+#    #+#             */
-/*   Updated: 2024/11/19 18:29:17 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/11/22 18:28:14 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main( void ) {
 Fixed a;
 Fixed const b( 10 );
-Fixed const c( 42.42f );
+Fixed const c( 422.42f );
 Fixed const d( b );
 a = Fixed( 1234.4321f );
 std::cout << "a is " << a << std::endl;
