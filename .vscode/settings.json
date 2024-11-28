@@ -71,7 +71,10 @@
     "optional": "cpp",
     "ratio": "cpp",
     "fstream": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "__functional_03": "cpp",
+    "filesystem": "cpp",
+    "__functional_base_03": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
