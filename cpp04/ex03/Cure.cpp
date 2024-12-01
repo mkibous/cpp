@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:12:53 by mkibous           #+#    #+#             */
-/*   Updated: 2024/11/28 17:23:33 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/12/01 15:41:02 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 Cure::Cure()
 {
-    type = "cure"
-    std::cout << "Cure default constructor called" << std::endl;
+    type = "cure";
 }
 Cure::Cure(const Cure &src)
 {
     type = src.type;
-    std::cout << "Cure Copy constructor called" << std::endl;
 }
 Cure &Cure::operator=(const Cure &rhs)
 {
-    std::cout << "Cure Copy assignment operator called" << std::endl;
     if (this == &rhs)
         return *this;
     type = rhs.type;
@@ -32,12 +29,13 @@ Cure &Cure::operator=(const Cure &rhs)
 }
 Cure::~Cure()
 {
-    std::cout << "Cure Destructor called" << std::endl;
 }
 
-AMateria *Cure::clone(){
-    return new Cure(*this)
+Cure *Cure::clone()
+{
+    return new Cure(*this);
 }
-void Cure::use(ICharacter &target){
-    std::cout << "* heals " << target.name << "’s wounds *" << std::endl;
+void Cure::use(ICharacter &target)
+{
+    std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

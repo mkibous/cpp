@@ -9,4 +9,6 @@ public:
     Ice(const Ice &src);
     Ice &operator=(const Ice &rhs);
     ~Ice();
+    Ice *clone();
+    void use(ICharacter &target);
 };
