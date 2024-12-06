@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:14:44 by mkibous           #+#    #+#             */
-/*   Updated: 2024/12/01 18:28:03 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/12/02 08:39:22 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void MateriaSource::learnMateria(AMateria *materia) {
         if (!materias[i] && materia)
         {
             materias[i] = materia->clone();
-            delete materia;
             break;
         }
     }
+    delete materia;
 }
 AMateria *MateriaSource::createMateria(std::string const &type) {
     for (size_t i = 0; i < 4; i++)

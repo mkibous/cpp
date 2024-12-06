@@ -1,7 +1,7 @@
 NAME = Materia
 SRC = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 HEADERS = AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp MateriaSource.hpp
-FLAGS = -Wall -Wextra  -std=c++98
+FLAGS = -Wall -Wextra -Werror  -std=c++98
 OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 

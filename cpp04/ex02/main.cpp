@@ -6,16 +6,20 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:34:01 by mkibous           #+#    #+#             */
-/*   Updated: 2024/11/27 17:36:48 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/12/03 11:03:05 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-
+// void leaks()
+// {
+//     system("leaks animal");
+// }
 int main()
 {
+    // atexit(leaks);
     const Animal *j = new Dog();
     const Animal *i = new Cat();
     std::cout << std::endl;

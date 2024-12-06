@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:34:01 by mkibous           #+#    #+#             */
-/*   Updated: 2024/11/27 13:09:01 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/12/03 11:01:01 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+// void leak()
+// {
+//     system("leaks animal");
+// }
+
 int main()
 {
+    // atexit(leak);
     const Animal *meta = new Animal();
     const Animal *j = new Dog();
     const Animal *i = new Cat();
