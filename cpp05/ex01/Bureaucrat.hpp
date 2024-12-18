@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Form.hpp"
 class Bureaucrat 
 {
 private:
@@ -32,5 +33,6 @@ public:
             return "Grade is too low!";
         }
     };
+    void signForm(Form &src);
 };
 std::ostream &operator<<(std::ostream &os, Bureaucrat &obj);

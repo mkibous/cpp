@@ -6,27 +6,21 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:59:45 by mkibous           #+#    #+#             */
-/*   Updated: 2024/12/16 14:48:45 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/12/16 18:00:40 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 int main()
 {
     try
     {
-        Bureaucrat bob("Bob", 0);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
-        std::cout << std::endl;
-    try
-    {
-        Bureaucrat alice("Alice", 151);
-        std::cout << alice << std::endl;
+        Form bob("Bob", 50, 0);
+        Bureaucrat med("med", 49);
+        bob.beSigned(med);
+        std::cout << bob << std::endl;
+        med.signForm(bob);
     }
     catch (std::exception &e)
     {
@@ -35,44 +29,14 @@ int main()
     std::cout << std::endl;
     try
     {
-        Bureaucrat bob("Bob", 1);
+        Form bob("Bob", 50, 0);
+        Bureaucrat med("med", 51);
         std::cout << bob << std::endl;
-        ++bob;
+        med.signForm(bob);
     }
     catch (std::exception &e)
     {
         std::cout << "Error: " << e.what() << std::endl;
     }
-    std::cout << std::endl;
-    try
-    {
-        Bureaucrat bob("Bob", 150);
-        std::cout << bob << std::endl;
-        --bob;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
-    std::cout << std::endl;
-    try
-    {
-        Bureaucrat jack("Jack", 50);
-        Bureaucrat bob("bob", 80);
-        std::cout << bob << std::endl;
-        bob = jack;
-        std::cout << bob << std::endl;
-        std::cout << jack << std::endl;
-        --jack;
-        --jack;
-        std::cout << jack << std::endl;
-        ++jack;
-        std::cout << jack << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
-
     return 0;
 }

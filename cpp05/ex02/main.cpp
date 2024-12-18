@@ -6,27 +6,23 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:59:45 by mkibous           #+#    #+#             */
-/*   Updated: 2024/12/16 14:48:45 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/12/17 13:28:14 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
 int main()
 {
     try
     {
-        Bureaucrat bob("Bob", 0);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
-        std::cout << std::endl;
-    try
-    {
-        Bureaucrat alice("Alice", 151);
-        std::cout << alice << std::endl;
+        ShrubberyCreationForm bob("Bob");
+        Bureaucrat b("jemy", 10);
+        bob.beSigned(b);
+        b.executeForm(bob);
     }
     catch (std::exception &e)
     {
@@ -35,9 +31,11 @@ int main()
     std::cout << std::endl;
     try
     {
-        Bureaucrat bob("Bob", 1);
-        std::cout << bob << std::endl;
-        ++bob;
+        RobotomyRequestForm bob("Bob");
+        Bureaucrat b("jemy", 35);
+        bob.beSigned(b);
+        bob.execute(b);
+        b.executeForm(bob);
     }
     catch (std::exception &e)
     {
@@ -46,9 +44,9 @@ int main()
     std::cout << std::endl;
     try
     {
-        Bureaucrat bob("Bob", 150);
-        std::cout << bob << std::endl;
-        --bob;
+        PresidentialPardonForm bob("Bob");
+        Bureaucrat b("jemy", 5);
+        b.executeForm(bob);
     }
     catch (std::exception &e)
     {
@@ -57,22 +55,13 @@ int main()
     std::cout << std::endl;
     try
     {
-        Bureaucrat jack("Jack", 50);
-        Bureaucrat bob("bob", 80);
-        std::cout << bob << std::endl;
-        bob = jack;
-        std::cout << bob << std::endl;
-        std::cout << jack << std::endl;
-        --jack;
-        --jack;
-        std::cout << jack << std::endl;
-        ++jack;
-        std::cout << jack << std::endl;
+        PresidentialPardonForm bob("Bob");
+        Bureaucrat b("jemy", 5);
+        bob.beSigned(b);
+        b.executeForm(bob);
     }
     catch (std::exception &e)
     {
         std::cout << "Error: " << e.what() << std::endl;
     }
-
-    return 0;
 }

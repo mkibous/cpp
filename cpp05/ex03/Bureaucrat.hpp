@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
-class Bureaucrat 
+#include "AForm.hpp"
+class AForm;
+class Bureaucrat
 {
 private:
     const std::string name;
@@ -32,5 +34,7 @@ public:
             return "Grade is too low!";
         }
     };
+    void signForm(AForm &src);
+    void executeForm(AForm const &form) const;
 };
 std::ostream &operator<<(std::ostream &os, Bureaucrat &obj);
