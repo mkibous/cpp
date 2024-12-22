@@ -6,13 +6,13 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:47:19 by mkibous           #+#    #+#             */
-/*   Updated: 2024/12/18 14:58:53 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/12/21 19:18:44 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential", 72, 45, false)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential", 25, 5, false)
 {
     target = "default";
 }
@@ -26,7 +26,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
     return (*this);
 }
 PresidentialPardonForm::~PresidentialPardonForm() {}
-PresidentialPardonForm::PresidentialPardonForm(std::string name) : AForm("Presidential", 72, 45, false)
+PresidentialPardonForm::PresidentialPardonForm(std::string name) : AForm("Presidential", 25, 5, false)
 {
     target = name;
 }
