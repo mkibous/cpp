@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 15:13:22 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/13 13:03:55 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/13 09:00:48 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/13 09:41:47 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <cstdio>
-
-int main(int arc, char **arv)
+#pragma once
+#include "Data.hpp"
+#include <iostream>
+#include <cstdint>
+class Data;
+class Serializer
 {
-    if (arc != 2)
-        std::cout << "Error: bad arguments" << std::endl, exit(1);
-    ScalarConverter::convert(arv[1]);
-}
+private:
+    Serializer();
+
+public:
+    static uintptr_t serialize(Data *ptr);
+    static Data *deserialize(uintptr_t raw);
+};

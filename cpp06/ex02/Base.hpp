@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 15:13:22 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/13 13:03:55 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/13 09:56:07 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/13 10:24:06 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <cstdio>
-
-int main(int arc, char **arv)
+#pragma once
+#include <iostream>
+class Base
 {
-    if (arc != 2)
-        std::cout << "Error: bad arguments" << std::endl, exit(1);
-    ScalarConverter::convert(arv[1]);
-}
+private:
+public:
+    virtual ~Base();
+};
+Base *generate(void);
+void identify(Base *p);
+void identify(Base &p);

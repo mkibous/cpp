@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 15:13:22 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/13 13:03:55 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/13 10:24:30 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/13 10:57:28 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <cstdio>
+#include "Base.hpp"
 
-int main(int arc, char **arv)
+int main()
 {
-    if (arc != 2)
-        std::cout << "Error: bad arguments" << std::endl, exit(1);
-    ScalarConverter::convert(arv[1]);
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    Base *ptr = generate();
+    identify(ptr);
+    identify(*ptr);
+    delete ptr;
 }

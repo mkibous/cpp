@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 15:13:22 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/13 13:03:55 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/13 09:09:16 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/13 09:19:24 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <cstdio>
-
-int main(int arc, char **arv)
+#include "Serializer.hpp"
+Serializer::Serializer() {}
+uintptr_t Serializer::serialize(Data *ptr)
 {
-    if (arc != 2)
-        std::cout << "Error: bad arguments" << std::endl, exit(1);
-    ScalarConverter::convert(arv[1]);
+    return (reinterpret_cast<uintptr_t>(ptr));
+}
+Data *Serializer::deserialize(uintptr_t raw)
+{
+    return (reinterpret_cast<Data *>(raw));
 }

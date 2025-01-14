@@ -5,17 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 15:13:22 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/13 13:03:55 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/13 15:35:06 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/13 15:40:26 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <cstdio>
-
-int main(int arc, char **arv)
+#include "whatever.hpp"
+int main(void)
 {
-    if (arc != 2)
-        std::cout << "Error: bad arguments" << std::endl, exit(1);
-    ScalarConverter::convert(arv[1]);
+    int a = 2;
+    int b = 3;
+    ::swap(a, b);
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+    std::cout << "min( a, b ) = " << ::min(a, b) << std::endl;
+    std::cout << "max( a, b ) = " << ::max(a, b) << std::endl;
+    std::string c = "chaine1";
+    std::string d = "chaine2";
+    ::swap(c, d);
+    std::cout << "c = " << c << ", d = " << d << std::endl;
+    std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
+    std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
+    return 0;
 }

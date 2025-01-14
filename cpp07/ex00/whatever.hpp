@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 15:13:22 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/13 13:03:55 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/13 15:32:36 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/13 15:41:57 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <cstdio>
+#pragma once
+#include <iostream>
+template <typename T>
 
-int main(int arc, char **arv)
+void swap(T &a, T &b)
 {
-    if (arc != 2)
-        std::cout << "Error: bad arguments" << std::endl, exit(1);
-    ScalarConverter::convert(arv[1]);
+    T tmp = a;
+    a = b;
+    b = tmp;
+}
+template <typename T>
+T min(T a, T b)
+{
+    if( a < b)
+        return(a);
+    return(b);
+}
+template <typename T>
+T max(T a, T b)
+{
+    if( a > b)
+        return(a);
+    return(b);
 }
