@@ -6,11 +6,30 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:39:33 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/16 10:40:55 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:17:01 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+Span::Span()
+{
+    maxsize = -1;
+}
+Span::~Span() {}
+Span::Span(const Span &src)
+{
+    *this = src;
+}
+Span &Span::operator=(const Span &src)
+{
+    if (this != &src)
+    {
+        this->maxsize = src.maxsize;
+        this->numbers = src.numbers;
+    }
+    return *this;
+}
 Span::Span(unsigned int N)
 {
     maxsize = N;

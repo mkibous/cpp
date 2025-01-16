@@ -1,31 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 09:17:39 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/16 11:12:35 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/16 11:10:12 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/16 11:10:40 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
-#include <vector>
-class Span
-{
-private:
-    unsigned int maxsize;
-    std::vector<int> numbers;
-
-public:
-    Span();
-    ~Span();
-    Span(const Span &src);
-    Span &operator=(const Span &src);
-    Span(unsigned int N);
-    void addNumber(int number);
-    int shortestSpan();
-    int longestSpan();
-};
