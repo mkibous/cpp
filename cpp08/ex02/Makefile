@@ -1,6 +1,6 @@
-NAME = Array
-SRC = main.cpp 
-HEADERS = Array.hpp
+NAME = MutantStack
+SRC = main.cpp
+HEADERS = MutantStack.hpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
 all: $(NAME)

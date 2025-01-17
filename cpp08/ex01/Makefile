@@ -1,7 +1,7 @@
 NAME = span
 SRC = main.cpp Span.cpp
 HEADERS = Span.hpp
-FLAGS = -Wall -Wextra -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 

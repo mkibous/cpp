@@ -1,7 +1,7 @@
 NAME = find
 SRC = main.cpp 
 HEADERS = easyfind.hpp
-FLAGS = -Wall -Wextra -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 

@@ -1,6 +1,6 @@
-NAME = Array
-SRC = main.cpp 
-HEADERS = Array.hpp
+NAME = btc
+SRC = main.cpp BitcoinExchange.cpp
+HEADERS = BitcoinExchange.hpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
