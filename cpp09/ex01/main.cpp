@@ -5,31 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 09:45:02 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/18 20:12:47 by mkibous          ###   ########.fr       */
+/*   Created: 2025/01/18 16:21:49 by mkibous           #+#    #+#             */
+/*   Updated: 2025/01/19 12:22:36 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 int main(int arc, char **arv)
 {
     if (arc != 2) 
-        return (std::cout << "Inalid Arguments" << std::endl, 1);
-    (void)arv;
-    std::ifstream dataBaseFile("data.csv");
-    if (!dataBaseFile.is_open())
-        return (std::cout << "Error: Could not open database file!" << std::endl, 1);
-    std::ifstream secondaryDataFile(arv[1]);
-    if (!secondaryDataFile.is_open())
-        return (std::cout << "Error: Could not open the file!" << std::endl, 1);
-    BitcoinExchange btc;
+        return (std::cerr << "ERROR: Inalid Arguments" << std::endl, 1);
+    std::string numbers = arv[1];
     try
     {
-        btc.savedata(dataBaseFile);
-        btc.evaluateData(secondaryDataFile);
+        RPN rpn(numbers);
     }
-    catch (std::exception &e)
+    catch(const std::exception& e)
     {
-        std::cout << "ERROR: " << e.what() << std::endl;
+        std::cerr << e.what() << '\n';
     }
 }

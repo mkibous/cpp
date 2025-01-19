@@ -6,11 +6,12 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:05:49 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/17 20:07:12 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/18 15:00:08 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <cstring>
 BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
 {
@@ -68,15 +69,29 @@ double BitcoinExchange::validateNumber(std::string &secondPart)
         throw std::runtime_error("too large a number.");
     return (number);
 }
+bool isLeapYear(int year) {
+    // A leap year is divisible by 4, but years divisible by 100 are not leap years unless also divisible by 400
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+}
+int daysInMonth(int month, int year) {
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    
+    // If the month is February (index 1), check for a leap year
+    if (month == 2 && isLeapYear(year)) {
+        return 29;
+    }
+    return daysInMonth[month - 1];
+}
+    
 long int DateToNumber(std::string date)
 {
     long int number = -1;
     size_t index = date.find("-");
-    if (index != std::string::npos)
+    if (index != std::string::npos && index == 4)
     {
         date.erase(index, 1);
         index = date.find("-");
-        if (index != std::string::npos)
+        if (index != std::string::npos && index == 6)
             date.erase(index, 1);
         else
             return (-1);
@@ -84,7 +99,7 @@ long int DateToNumber(std::string date)
         iss >> number;
         if (iss.fail())
             return (-1);
-        if (number % 100 < 1 || number % 100 > 31) // cheking days
+        if (number % 100 < 1 || number % 100 > daysInMonth((number / 100) % 100, number / 10000)) // cheking days
             return (-1);
         if ((number / 100) % 100 < 1 || (number / 100) % 100 > 12)
             return (-1);
@@ -96,7 +111,7 @@ unsigned int BitcoinExchange::searchForDate(std::string &date)
 {
     long int ldate = 0;
     // need to get closest date
-    // first trasform year-month-day to double : y.md
+    // first trasform year-month-day to int : ymd
     ldate = DateToNumber(date);
     if (ldate == -1)
         throw std::runtime_error("Invalid date");
