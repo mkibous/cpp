@@ -6,12 +6,13 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:05:49 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/18 15:00:08 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/20 11:53:37 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <cstring>
+#include <iterator> 
 BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
 {
@@ -21,8 +22,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src)
 {
     if (this != &src)
     {
-        this->dates = src.dates;
-        this->value = src.value;
+        this->data = src.data;
     }
     return *this;
 }
@@ -42,13 +42,14 @@ void BitcoinExchange::savedata(std::ifstream &dataBaseFile)
         if (pos != std::string::npos)
         {
             std::string firstPart = line.substr(0, pos);
-            dates.push_back(DateToNumber(firstPart));
+            // data.push_back(DateToNumber(firstPart));
             std::string secondPart = line.substr(pos + 1);
             std::istringstream iss(secondPart);
             iss >> btcvalue;
             if (iss.fail())
-                dates.pop_back(), throw std::runtime_error("Invalid value in data.csv");
-            value.push_back(btcvalue);
+                throw std::runtime_error("Invalid value in data.csv");
+            // value.push_back(btcvalue);
+            data[DateToNumber(firstPart)] = btcvalue;
         }
         else
         {
@@ -107,33 +108,35 @@ long int DateToNumber(std::string date)
     }
     return -1;
 }
-unsigned int BitcoinExchange::searchForDate(std::string &date)
+long int BitcoinExchange::findClosestday(long int target){
+    std::map<long int, double>::const_iterator it = data.find(target);
+    if (it != data.end()) {
+        return it->first;  // If found, return the exact key
+    }
+    std::map<long int, double>::const_iterator lower = data.lower_bound(target);
+    
+    // Case 1: If lower bound is the first element or target is smaller than the first key
+    if (lower == data.begin()) {
+        return lower->first;  // No lower key, return the first key (closest higher)
+    }
+    std::map<long int, double>::const_iterator prev = lower;
+    --prev;  // Move iterator to the previous element
+    return prev->first;  // Return the previous key (closest lower key)
+}
+long int BitcoinExchange::searchForDate(std::string &date)
 {
     long int ldate = 0;
-    // need to get closest date
-    // first trasform year-month-day to int : ymd
     ldate = DateToNumber(date);
     if (ldate == -1)
         throw std::runtime_error("Invalid date");
-    int closestIndex = 0;
-    long int min_diff = std::abs(ldate - dates[0]);
-    for (size_t i = 0; i < dates.size(); ++i)
-    {
-        long int diff = std::abs(ldate - dates[i]);
-        if (diff < min_diff)
-        {
-            min_diff = diff;
-            closestIndex = i;
-        }
-    }
-    return (closestIndex);
+    return (findClosestday(ldate));
 }
 void BitcoinExchange::evaluateData(std::ifstream &secondaryDataFile)
 {
 
     std::string line = "";
     double exchange = 0;
-    unsigned int index = 0;
+    long int index = 0;
     std::getline(secondaryDataFile, line);
     if (strcmp(line.c_str(), "date | value"))
         throw std::runtime_error("the first line in data file must be \"date | value\"");
@@ -149,7 +152,7 @@ void BitcoinExchange::evaluateData(std::ifstream &secondaryDataFile)
             {
                 exchange = this->validateNumber(s_exchange);
                 index = searchForDate(date);
-                std::cout << date << " => " << exchange << " = " << exchange * this->value[index] << std::endl;
+                std::cout << date << " => " << exchange << " = " << exchange * this->data[index] << std::endl;
             }
             catch (std::exception &e)
             {

@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:21:49 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/19 12:22:36 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/20 12:15:55 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main(int arc, char **arv)
     try
     {
         RPN rpn(numbers);
+        std::cout << rpn.getresult() << std::endl;
     }
     catch(const std::exception& e)
     {

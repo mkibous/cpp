@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:41:30 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/19 12:56:05 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/20 12:39:57 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,19 @@ RPN &RPN::operator=(const RPN &src)
     return *this;
 }
 RPN::~RPN() {}
-RPN::RPN(std::string &numbers){
+void RPN::calculate(char op){
+    int res;
+    if(data.size() < 2)
+        throw std::runtime_error("ERROR");
+    int y = data.back();
+    data.pop_back();
+    int x = data.back();
+    data.pop_back();
+    op == '+' ? (res = x + y) : (op == '-' ? (res = x - y) : (op == '*' ? (res = x * y) : (res = x / y)));
+    data.push_back(res);
+    std::cout << x << op << y << "= "<< res << std::endl;
+}
+RPN::RPN(std::string numbers){
     char c;
     std::string operators = "+-*/ ";
     while (numbers.size() > 0)
@@ -38,10 +50,21 @@ RPN::RPN(std::string &numbers){
             || operators.find(numbers[0]) != std::string::npos))
             || operators.find(c) != std::string::npos)
         {
-            if(c != ' ')
-                data.push_back(c);
+            if(c >= '0' && c <= '9')
+                data.push_back( c - '0');
+            if (operators.find(c) != std::string::npos && c != ' ')
+            {
+                calculate(c);
+            }
+            
         }
         else
-            throw std::runtime_error("Invalid arguments");
+            throw std::runtime_error("ERROR");
     }
+}
+
+int RPN::getresult() const{
+    if(data.size() != 1)
+        throw std::runtime_error("ERROR");
+    return data.front();
 }
