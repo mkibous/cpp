@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:05:34 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/21 16:05:23 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/21 17:34:33 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,23 @@ void sortcontainer(T &container){
         return ;
     int j = 0;
     int y = 0;
-    int splitPoint = container.size() / 2;
-    T part1(container.begin(), container.begin() + splitPoint);
-    T part2(container.begin() + splitPoint, container.end());
+    int med = (container.size()) / 2;
+    T part1(container.begin(), container.begin() + med);
+    T part2(container.begin() + med, container.end());
+    // for (size_t i = 0; i < part1.size(); i++)
+    //     std::cout << "part1: " << part1[i] << std::endl;
+    // for (size_t i = 0; i < part2.size(); i++)
+    //     std::cout << "part2: " << part2[i] << std::endl;
+    // std::cout << std::endl;
+    // std::cout << std::endl;
+    // std::cout << std::endl;
     if(container.size() > 2)
     {
         sortcontainer(part1);
         sortcontainer(part2);
     }
+
+    
     //merge an sort
     for (size_t i = 0; i < container.size(); i++)
     {
