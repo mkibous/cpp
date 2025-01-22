@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:05:34 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/21 17:34:33 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/22 18:29:15 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,35 +64,33 @@ bool issorted(T &container){
 
 template <typename T>
 void sortcontainer(T &container){
-    if(issorted(container))
+    if(container.size() <= 1 ||  issorted(container))
         return ;
-    int j = 0;
-    int y = 0;
-    int med = (container.size()) / 2;
-    T part1(container.begin(), container.begin() + med);
-    T part2(container.begin() + med, container.end());
-    // for (size_t i = 0; i < part1.size(); i++)
-    //     std::cout << "part1: " << part1[i] << std::endl;
-    // for (size_t i = 0; i < part2.size(); i++)
-    //     std::cout << "part2: " << part2[i] << std::endl;
-    // std::cout << std::endl;
-    // std::cout << std::endl;
-    // std::cout << std::endl;
-    if(container.size() > 2)
+    T larger, smaller;
+    size_t n = container.size();
+    for (size_t i = 0; i + 1 < n; i +=2)
     {
-        sortcontainer(part1);
-        sortcontainer(part2);
+        if(container[i] > container[i + 1])
+        {
+            larger.push_back(container[i]);
+            smaller.push_back(container[i + 1]);
+        }
+        else
+        {
+            larger.push_back(container[i + 1]);
+            smaller.push_back(container[i]); 
+        }
     }
-
-    
-    //merge an sort
-    for (size_t i = 0; i < container.size(); i++)
-    {
-        if(j < (int)part1.size() &&  (part1[j] <= part2[y] || y >= (int)part2.size()))
-            container[i] = part1[j], j++;
-        else if(y < (int)part2.size() && (part1[j] > part2[y] || j >= (int)part1.size()))
-            container[i] = part2[y], y++;
+    if(n % 2 != 0)
+        larger.push_back(container[n - 1]);
+    sortcontainer(larger);
+    for (size_t i = 0; i < smaller.size(); i++) {
+        //binary search for insertion
+        typename T::iterator it = std::lower_bound(larger.begin(), larger.end(), smaller[i]);
+        //put element into the correct position
+        larger.insert(it, smaller[i]);
     }
+    container = larger;
 }
 void PmergeMe::sort(){
     struct timespec start, end;
@@ -124,6 +122,6 @@ void PmergeMe::sort(){
         std::cout << " " << vec[i];
     }
     std::cout << std::endl;
-    std::cout << "Time to process a range of "<< vec.size() <<" elements with std::vector : " << time_vec << "us" << std::endl;
-    std::cout << "Time to process a range of "<< dq.size() <<" elements with std::deque : " << time_dq << "us" << std::endl;
+    std::cout << "Time to process a range of "<< vec.size() <<" elements with std::vector : " << time_vec << " us" << std::endl;
+    std::cout << "Time to process a range of "<<  dq.size() <<" elements with std::deque  : " << time_dq << " us" << std::endl;
 }
