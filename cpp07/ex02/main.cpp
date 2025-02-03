@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:43:27 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/14 11:50:03 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/28 15:58:28 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@ void leak()
 int main()
 {
     // atexit(leak);
-    Array<int> arr(5);
+    const Array<int> arr(5);
     try
     {
-        Array<int> arr2(arr);
-        std::cout << "size: " << arr2.size() << std::endl;
         for (unsigned int i = 0; i < arr.size(); i++)
         {
             arr[i] = i + 1;
         }
-        arr2 = arr;
-        for (unsigned int i = 0; i < arr2.size(); i++)
+        Array<int> arr2(arr);
+        std::cout << "size: " << arr2.size() << std::endl;
+        Array<int> arr3;
+        arr3 = arr2;
+        for (unsigned int i = 0; i < arr3.size(); i++)
         {
-            std::cout << arr2[i] << std::endl;
+            std::cout << arr3[i] << std::endl;
         }
     }
     catch (std::exception &e)

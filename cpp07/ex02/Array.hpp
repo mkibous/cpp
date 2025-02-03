@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:43:13 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/14 11:51:21 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/28 15:56:00 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@ private:
     unsigned int len;
 
 public:
-    class OutOfBounds : public std::exception
-    {
-    public:
-        const char *what() const throw()
-        {
-            return "index is out of bounds";
-        }
-    };
     Array()
     {
         len = 0;
@@ -39,7 +31,7 @@ public:
         len = n;
         arr = new T[n]();
     }
-    Array(Array &src)
+    Array(const Array &src)
     {
         len = src.len;
         arr = new T[len];
@@ -70,10 +62,10 @@ public:
     {
         delete[] arr;
     }
-    T &operator[](unsigned int index)
+    T &operator[](unsigned int index) const
     {
         if (index >= len)
-            throw OutOfBounds();
+            throw std::runtime_error("index is out of bounds");
         return arr[index];
     }
 };

@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:45:00 by mkibous           #+#    #+#             */
-/*   Updated: 2024/12/18 14:17:36 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/26 15:03:04 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy", 72, 45, false)
 {
     target = "default";
-    std::srand(static_cast<unsigned int> (std::time(nullptr)));
+    std::srand(static_cast<unsigned int> (std::time(NULL)));
 }
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) : AForm(src.getname(), src.getgrade(), src.getexec(), src.getsign())
 {
     target = src.gettarget();
-    std::srand(static_cast<unsigned int> (std::time(nullptr)));
+    std::srand(static_cast<unsigned int> (std::time(NULL)));
 }
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
 {
@@ -32,7 +32,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 RobotomyRequestForm::RobotomyRequestForm(std::string name) : AForm("Robotomy", 72, 45, false)
 {
     target = name;
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    std::srand(static_cast<unsigned int>(std::time(NULL)));
 }
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {

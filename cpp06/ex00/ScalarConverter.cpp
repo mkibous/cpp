@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 15:16:05 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/13 13:04:08 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/26 15:00:39 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,24 @@ void ScalarConverter::convert(std::string str)
     double number = 0;
     bool isfloat = 0;
     bool isspecial = 0; // nan or inf
+    bool ischar = 0;
     if (str.at(str.length() - 1) == 'f' && str.length() > 1 && (str.at(str.length() - 2) != 'n' || str.find("nan") != std::string::npos))
         str.erase(str.length() - 1, 1);
     if (str.find("nan") != std::string::npos || str.find("inf") != std::string::npos)
         isspecial = 1;
-    std::istringstream iss(str);
-    iss >> number;
-    if (iss.fail())
-        std::cout << "Error: Invalid number" << std::endl, exit(1);
+    if(str.length() == 1 && (str[0] < '0' || str[0] > '9'))
+        number = static_cast<double>(str[0]), ischar = 1;
+    if(!ischar)
+    {
+        std::istringstream iss(str);
+        iss >> number;
+        if (iss.fail() )
+            std::cout << "Error: Invalid number" << std::endl, exit(1);
+        std::string tmp;
+        iss >> tmp;
+        if(!tmp.empty())
+            std::cout << "Error: Invalid number" << std::endl, exit(1);
+    }
     if (number != std::floor(number))
         isfloat = 1;
     if (std::floor(number) < -128.0 || std::floor(number) > 127.0)

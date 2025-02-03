@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:41:30 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/20 12:39:57 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/01/25 10:01:40 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void RPN::calculate(char op){
     data.pop_back();
     op == '+' ? (res = x + y) : (op == '-' ? (res = x - y) : (op == '*' ? (res = x * y) : (res = x / y)));
     data.push_back(res);
-    std::cout << x << op << y << "= "<< res << std::endl;
 }
 RPN::RPN(std::string numbers){
     char c;
