@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:57:21 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/16 10:43:32 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/17 16:20:21 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int main()
     sp.addNumber(17);
     sp.addNumber(9);
     sp.addNumber(11);
-    std::cout << sp.shortestSpan() << std::endl;
-    std::cout << sp.longestSpan() << std::endl;}
+    const Span sp2(sp);
+    std::cout << sp2.shortestSpan() << std::endl;
+    std::cout << sp2.longestSpan() << std::endl;
+    }
     catch(std::exception &e){
         std::cout << "ERROR: " << e.what() << std::endl;
     }

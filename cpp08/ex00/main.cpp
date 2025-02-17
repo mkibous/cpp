@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:06:01 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/01 15:57:18 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/17 16:43:46 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int main()
 {
     int target = 5;
+    try
     {
         std::vector<int> numbers;
         numbers.push_back(1);
@@ -26,13 +27,13 @@ int main()
         numbers.push_back(3);
         numbers.push_back(4);
         numbers.push_back(5);
-        std::vector<int>::iterator it = easyfind(numbers, target); 
-        if (it != numbers.end())
-            std::cout << "Found: " << *it << std::endl;
-        else
-            std::cout << "Key not found\n";
+        std::vector<int>::iterator it = easyfind(numbers, target);
+        std::cout << "Found: " << *it << std::endl;
+    }catch(std::exception &e){
+        std::cout << e.what() << std::endl;
     }
 
+    try
     {
         std::deque<int> numbers;
         numbers.push_back(1);
@@ -41,12 +42,12 @@ int main()
         numbers.push_back(4);
         numbers.push_back(5);
         std::deque<int>::iterator it = easyfind(numbers, target); 
-        if (it != numbers.end())
-            std::cout << "Found: " << *it << std::endl;
-        else
-            std::cout << "Key not found\n";
+        std::cout << "Found: " << *it << std::endl;
+    }catch(std::exception &e){
+        std::cout << e.what() << std::endl;
     }
 
+    try
     {
         std::list<int> numbers;
         numbers.push_back(1);
@@ -54,16 +55,12 @@ int main()
         numbers.push_back(3);
         numbers.push_back(4);
         numbers.push_back(5);
-        std::list<int>::iterator it = easyfind(numbers, target); 
-        if (it != numbers.end())
-            std::cout << "Found: " << *it << std::endl;
-        else
-            std::cout << "Key not found\n";
-        it = easyfind(numbers, 0); 
-        if (it != numbers.end())
-            std::cout << "Found: " << *it << std::endl;
-        else
-            std::cout << "Key not found" << std::endl;
+        std::list<int>::iterator it = easyfind(numbers, target);
+        std::cout << "Found: " << *it << std::endl;
+        it = easyfind(numbers, 0);
+        std::cout << "Found: " << *it << std::endl;
+    }catch(std::exception &e){
+        std::cout << e.what() << std::endl;
     }
     return 0;
 }

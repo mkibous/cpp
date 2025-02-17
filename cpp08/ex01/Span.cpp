@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:39:33 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/22 13:45:51 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/17 16:19:12 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void Span::addNumber(int number)
         throw std::runtime_error("The Span is full. Cannot add more elements.");
     numbers.push_back(number);
 }
-int Span::shortestSpan()
+int Span::shortestSpan() const
 {
     if (numbers.size() < 2)
         throw std::runtime_error("Not enough elements.");
@@ -55,7 +55,7 @@ int Span::shortestSpan()
         throw std::runtime_error("There are no numbers stored");
     return (diff);
 }
-int Span::longestSpan()
+int Span::longestSpan() const
 {
     if (numbers.size() < 2)
         throw std::runtime_error("Not enough elements.");

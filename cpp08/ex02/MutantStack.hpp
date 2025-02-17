@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:12 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/01 18:05:40 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/17 17:28:55 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,20 @@ class MutantStack : public std::stack<T, std::deque<T> >
 {
 public:
     typedef typename std::deque<T>::iterator iterator;
-    typedef typename std::deque<T>::reverse_iterator reverse_iterator;
+    typedef typename std::deque<T>::const_iterator const_iterator;
     iterator begin()
     {
         return this->c.begin();
     }
     iterator end()
+    {
+        return this->c.end();
+    }
+    const_iterator begin() const
+    {
+        return this->c.begin();
+    }
+    const_iterator end() const
     {
         return this->c.end();
     }
