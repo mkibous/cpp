@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:39:33 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/17 16:19:12 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/23 18:22:28 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,25 @@ int Span::longestSpan() const
         throw std::runtime_error("Not enough elements.");
     unsigned int diff = 0;
     bool sorted = 0;
+    int number1 = numbers[0];
     for (size_t i = 1; i < numbers.size(); i++)
     {
-        if (((numbers[i] - numbers[i - 1]) >= 0) && ((unsigned int)(numbers[i] - numbers[i - 1]) >= diff))
-            diff = numbers[i] - numbers[i - 1], sorted = 1;
+        if (((numbers[i] - numbers[i - 1]) >= 0) && ((unsigned int)(numbers[i] - number1) >= diff))
+            diff = numbers[i] - number1, sorted = 1;
+        else if(((numbers[i] - numbers[i - 1]) < 0))
+            number1 = numbers[i];
+        
     }
     if (!sorted)
         throw std::runtime_error("There are no numbers stored");
     return (diff);
+}
+
+void Span::addNumber(const std::vector<int> &vec){
+    
+    if (numbers.size() + vec.size() <= maxsize)
+        numbers.insert(numbers.end(), vec.begin(), vec.end());
+    else
+        throw std::runtime_error("Cannot add more than max size.");
+    
 }
