@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:39:33 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/23 18:22:28 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/24 11:14:23 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ int Span::longestSpan() const
     return (diff);
 }
 
-void Span::addNumber(const std::vector<int> &vec){
-    
-    if (numbers.size() + vec.size() <= maxsize)
-        numbers.insert(numbers.end(), vec.begin(), vec.end());
+void Span::addNumber(const std::vector<int>::iterator &start,const std::vector<int>::iterator &end ){
+    int size = std::distance(start, end);
+    if (numbers.size() + size <= maxsize)
+        numbers.insert(numbers.end(), start, end);
     else
         throw std::runtime_error("Cannot add more than max size.");
     

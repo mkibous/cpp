@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:05:49 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/20 11:53:37 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/25 15:00:39 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,19 +109,19 @@ long int DateToNumber(std::string date)
     return -1;
 }
 long int BitcoinExchange::findClosestday(long int target){
-    std::map<long int, double>::const_iterator it = data.find(target);
+    std::map<long int, double>::iterator it = data.find(target);// If found, return the exact key
+    // if not get the close biger value to it and move to prev one 
     if (it != data.end()) {
-        return it->first;  // If found, return the exact key
+        return it->first;  
     }
-    std::map<long int, double>::const_iterator lower = data.lower_bound(target);
+    std::map<long int, double>::iterator lower = data.lower_bound(target);
     
-    // Case 1: If lower bound is the first element or target is smaller than the first key
-    if (lower == data.begin()) {
-        return lower->first;  // No lower key, return the first key (closest higher)
-    }
-    std::map<long int, double>::const_iterator prev = lower;
-    --prev;  // Move iterator to the previous element
-    return prev->first;  // Return the previous key (closest lower key)
+    //If lower bound is the first element or target is smaller than the first key, return the first key
+    if (lower == data.begin())
+        return lower->first;
+    //if target biger than all element wen we iterate to prev we get the last element closest lower key
+    --lower;  // Move iterator to the previous element
+    return lower->first;  // Return the previous key closest lower key
 }
 long int BitcoinExchange::searchForDate(std::string &date)
 {

@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:04:11 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/23 17:25:05 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/27 22:47:20 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <vector>
 #include <deque>
 #include <sstream>
+#include <algorithm>
 #include <string>
 #include <cctype>
 #include <ctime>
@@ -64,11 +65,12 @@ public:
         if(n % 2 != 0)
             larger.push_back(container[n - 1]);
         sortcontainer(larger);
-        for (size_t i = 0; i < smaller.size(); i++) {
-            //binary search for insertion
-            typename T::iterator it = std::lower_bound(larger.begin(), larger.end(), smaller[i]);
-            //put element into the correct position
-            larger.insert(it, smaller[i]);
+        typename T::iterator it = smaller.begin();
+        while (it != smaller.end())
+        {
+            typename T::iterator pos = std::lower_bound(larger.begin(),larger.end(),*it);
+            larger.insert(pos, *it);
+            ++it;
         }
         container = larger;
     }
@@ -96,4 +98,7 @@ public:
             printContent(0);
     }
 };
-    
+// Time to process a range of 10000 elements with std::vector : 8131.53 us
+// Time to process a range of 10000 elements with std::deque  : 26622 us
+// Time to process a range of 10000 elements with std::vector : 8403.83 us
+// Time to process a range of 10000 elements with std::deque  : 26366 us

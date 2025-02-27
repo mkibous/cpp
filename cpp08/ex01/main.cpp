@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:57:21 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/23 17:43:01 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/24 11:16:26 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ int main()
     try{
     Span sp = Span(100001);
     sp.addNumber(-100);
-        std::vector<int> vec;
-        for (int i = 1; i <= 100000; i++)
-        {
-            vec.push_back(i);
-        }
-        
-    sp.addNumber(vec);
+    std::vector<int> vec;
+    for (int i = 1; i <= 100000; i++)
+    {
+        vec.push_back(i);
+    }
+    sp.addNumber(vec.begin(), vec.end());
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
     sp.addNumber(-100);

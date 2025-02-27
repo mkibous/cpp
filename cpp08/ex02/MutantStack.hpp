@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:12 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/23 18:18:51 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/24 16:41:30 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ public:
     {
         return this->c.rend();
     }
-    const_reverse_iterator rbegin() const
-    {
-        return this->c.rbegin();
-    }
     const_reverse_iterator rend() const
     {
         return this->c.rend();
+    }
+    const_reverse_iterator rbegin() const
+    {
+        return this->c.rbegin();
     }
 };

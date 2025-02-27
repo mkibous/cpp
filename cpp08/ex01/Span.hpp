@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:17:39 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/23 18:22:45 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/02/24 11:09:59 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ public:
     void addNumber(int number);
     int shortestSpan() const;
     int longestSpan() const;
-    void addNumber(const std::vector<int> &vec);
+    void addNumber(const std::vector<int>::iterator &start,const std::vector<int>::iterator &end );
 };
