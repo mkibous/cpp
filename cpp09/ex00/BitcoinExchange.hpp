@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:30:13 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/23 20:07:11 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/03/01 18:15:27 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <sstream>
 #include <string>
 #include <iterator>
+#include <algorithm>
 #include <cmath>
 class BitcoinExchange
 {

@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:05:49 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/25 15:00:39 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/03/04 21:33:50 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ void BitcoinExchange::savedata(std::ifstream &dataBaseFile)
             iss >> btcvalue;
             if (iss.fail())
                 throw std::runtime_error("Invalid value in data.csv");
-            // value.push_back(btcvalue);
-            data[DateToNumber(firstPart)] = btcvalue;
+            std::string tmp;
+            iss >> tmp;
+            long int i = DateToNumber(firstPart);
+            if (!tmp.empty() || i < 0)
+                throw std::runtime_error("Invalid value in data.csv");
+            data[i] = btcvalue;
         }
         else
         {
@@ -68,6 +72,10 @@ double BitcoinExchange::validateNumber(std::string &secondPart)
         throw std::runtime_error("not a positive number.");
     else if (number > 1000.0)
         throw std::runtime_error("too large a number.");
+    std::string remaining;
+    iss >> remaining;
+    if(!remaining.empty())
+        throw std::runtime_error("Invalid number");
     return (number);
 }
 bool isLeapYear(int year) {
@@ -83,30 +91,37 @@ int daysInMonth(int month, int year) {
     }
     return daysInMonth[month - 1];
 }
-    
 long int DateToNumber(std::string date)
 {
-    long int number = -1;
-    size_t index = date.find("-");
-    if (index != std::string::npos && index == 4)
-    {
-        date.erase(index, 1);
-        index = date.find("-");
-        if (index != std::string::npos && index == 6)
-            date.erase(index, 1);
-        else
-            return (-1);
-        std::istringstream iss(date);
-        iss >> number;
-        if (iss.fail())
-            return (-1);
-        if (number % 100 < 1 || number % 100 > daysInMonth((number / 100) % 100, number / 10000)) // cheking days
-            return (-1);
-        if ((number / 100) % 100 < 1 || (number / 100) % 100 > 12)
-            return (-1);
-        return (number);
-    }
-    return -1;
+    int month;
+    int days;
+    char separator;
+    int year;
+    std::istringstream iss(date);
+    iss >> year;
+    if (iss.fail())
+        return (-1);
+    iss >> separator;
+    if (iss.fail() || separator != '-')
+        return(-1);
+    iss >> month;
+    if (iss.fail())
+        return (-1);
+    iss >> separator;
+    if (iss.fail() || separator != '-')
+        return(-1);
+    iss >> days;
+    if (iss.fail())
+        return (-1);
+    std::string remaining;
+    iss >> remaining;
+    if(!remaining.empty())
+        return(-1);
+    if (month < 1 || month > 12)
+        return (-1);
+    if (days < 1 || days > daysInMonth(month, year)) // cheking days
+        return (-1);
+    return (days + (month * 100) + (year * 10000));
 }
 long int BitcoinExchange::findClosestday(long int target){
     std::map<long int, double>::iterator it = data.find(target);// If found, return the exact key
@@ -118,7 +133,7 @@ long int BitcoinExchange::findClosestday(long int target){
     
     //If lower bound is the first element or target is smaller than the first key, return the first key
     if (lower == data.begin())
-        return lower->first;
+        throw std::runtime_error("Invalid date");
     //if target biger than all element wen we iterate to prev we get the last element closest lower key
     --lower;  // Move iterator to the previous element
     return lower->first;  // Return the previous key closest lower key

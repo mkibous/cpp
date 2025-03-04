@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:04:11 by mkibous           #+#    #+#             */
-/*   Updated: 2025/02/27 22:47:20 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/03/04 21:33:25 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,3 @@ public:
             printContent(0);
     }
 };
-// Time to process a range of 10000 elements with std::vector : 8131.53 us
-// Time to process a range of 10000 elements with std::deque  : 26622 us
-// Time to process a range of 10000 elements with std::vector : 8403.83 us
-// Time to process a range of 10000 elements with std::deque  : 26366 us
