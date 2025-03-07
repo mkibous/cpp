@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:12:24 by mkibous           #+#    #+#             */
-/*   Updated: 2025/01/20 12:20:15 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/03/07 14:38:54 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class RPN
 {
 private:
-std::list<int> data;
+std::list<double> data;
 void calculate(char op);
 
 public:
@@ -25,5 +25,5 @@ public:
     RPN(std::string numbers);
     RPN &operator=(const RPN &src);
     ~RPN();
-    int getresult() const;
+    double getresult() const;
 };

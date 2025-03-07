@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:41:30 by mkibous           #+#    #+#             */
-/*   Updated: 2025/03/04 21:32:13 by mkibous          ###   ########.fr       */
+/*   Updated: 2025/03/07 14:39:27 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ RPN &RPN::operator=(const RPN &src)
 }
 RPN::~RPN() {}
 void RPN::calculate(char op){
-    int res;
+    double res;
     if(data.size() < 2)
         throw std::runtime_error("ERROR");
-    int y = data.back();
+    double y = data.back();
     data.pop_back();
-    int x = data.back();
+    double x = data.back();
     data.pop_back();
     if(op == '+') res = x + y;
     if(op == '-') res = x - y;
@@ -65,7 +65,7 @@ RPN::RPN(std::string numbers){
     }
 }
 
-int RPN::getresult() const{
+double RPN::getresult() const{
     if(data.size() != 1)
         throw std::runtime_error("ERROR");
     return data.front();
